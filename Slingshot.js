@@ -1,20 +1,24 @@
 class Slingshot{
-    constructor(bodyA, bodyB){
+    constructor(bodyA, pointB){
         var options = {
             bodyA: bodyA,
-            bodyB: bodyB,
+            pointB: pointB,
             stiffness: 0.04,
             length: 10
         }
         this.Slingshot = Constraint.create(options);
         World.add(world, this.Slingshot);
     }
-
+    fly(){
+        this.Slingshot.bodyA = null
+    }
     display(){
+        if(this.Slingshot.bodyA){
         var pointA = this.Slingshot.bodyA.position;
-        var pointB = this.Slingshot.bodyB.position;
+        var pointB = this.Slingshot.pointB;
         strokeWeight(4);
         line(pointA.x, pointA.y, pointB.x, pointB.y);
+        }
     }
     
 }
